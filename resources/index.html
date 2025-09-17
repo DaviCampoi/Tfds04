@@ -1,11 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aula 05 :: TF</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TF - Aula 05 — Login</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <style>
+    /* estilo minimal só pra ficar legível — opcional, pode criar styles.css */
+    body { font-family: Arial, sans-serif; padding: 20px; max-width: 900px; margin: auto; }
+    input, button { padding: 8px; margin: 6px 0; }
+    #users-section { margin-top: 20px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+    th, td { padding: 8px; border: 1px solid #ddd; text-align: left; }
+    #pagination { margin-top: 10px; display:flex; gap:8px; align-items:center; }
+    [hidden] { display: none !important; }
+  </style>
 </head>
 <body>
-    
+  <main>
+    <!-- Login -->
+    <section id="login-section">
+      <h1>Entrar</h1>
+      <form id="login-form">
+        <label for="email">Email</label><br />
+        <input id="email" name="email" type="email" required /><br />
+        <label for="password">Senha</label><br />
+        <input id="password" name="password" type="password" required /><br />
+        <button type="submit">Login</button>
+      </form>
+      <div id="login-message" role="status" aria-live="polite"></div>
+    </section>
+
+    <!-- Área após login (oculta até autenticar) -->
+    <section id="app-section" hidden>
+      <header style="display:flex; justify-content:space-between; align-items:center;">
+        <h2>Dashboard</h2>
+        <div>
+          <button id="logout-button">Logout</button>
+        </div>
+      </header>
+
+      <!-- Upload -->
+      <section id="upload-section">
+        <h3>Upload de imagem</h3>
+        <input id="image-input" type="file" accept="image/*" />
+        <button id="upload-button">Enviar</button>
+        <div id="upload-message" role="status" aria-live="polite"></div>
+      </section>
+
+      <!-- Lista de usuários -->
+      <section id="users-section">
+        <h3>Usuários</h3>
+        <div id="user-list">Carregue os usuários após o login.</div>
+        <div id="pagination">
+          <button id="prev-btn" disabled>Anterior</button>
+          <span id="page-info">Página 1</span>
+          <button id="next-btn">Próxima</button>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <!-- IMPORTANTE: arquivos TS conforme pedido no TF -->
+  <script type="module" src="./login.ts"></script>
+  <script type="module" src="./users.ts"></script>
+  <script type="module" src="./upload.ts"></script>
 </body>
 </html>
